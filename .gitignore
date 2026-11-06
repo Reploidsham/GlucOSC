@@ -1,0 +1,18 @@
+# build output
+/build/
+/dist/
+*.spec
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Unity output the builder makes inside a project (never commit these here)
+unity/GlucoseDevice/Generated/
+*.meta
+
+# editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

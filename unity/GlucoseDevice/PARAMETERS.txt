@@ -1,0 +1,37 @@
+Expression Parameters to add to your avatar
+===========================================
+All are SYNCED, so other players see the numbers (that is the point: a safety display).
+None of them are "saved" except BG_Show.
+
+Name        Type   Default  Synced  Saved
+BG_D1       Int    10       yes     no
+BG_D2       Int    10       yes     no
+BG_D3       Int    10       yes     no
+BG_Trend    Int    0        yes     no
+BG_Stale    Bool   0        yes     no
+BG_Low      Bool   0        yes     no
+BG_High     Bool   0        yes     no
+BG_Mgdl     Bool   0        yes     no
+BG_Beat     Bool   0        yes     no
+BG_Show     Bool   1        yes     yes   (menu toggle: show the numbers to other players)
+BG_Simple   Bool   0        yes     yes   (menu toggle: plain words instead of numbers)
+BG_Words    Bool   0        yes     no    (OPTIONAL, only if you ticked "let the bridge app rotate to the words panel")
+BG_LangSel  Float  0.05     yes     yes   (OPTIONAL, only if you ticked "language dial in the VRChat menu")
+
+Sync cost: 4 x Int (8 bits) + 7 x Bool (1) = 39 bits of your 256 (+1 for BG_Words, +8 for BG_LangSel).
+
+What the numbers mean
+---------------------
+BG_D1..D3   One digit each, 0-9. 10 = blank.
+            mmol/L: 6.2 -> D1=10 (blank), D2=6, D3=2 (decimal point is drawn by the device).
+            mg/dL : 112 -> D1=1, D2=1, D3=2.
+BG_Trend    0 none, 1 fast up, 2 up-right, 3 flat, 4 down-right, 5 fast down.
+BG_Stale    True when the reading is too old: screen goes grey with "--".
+BG_Low      True when below your low threshold: pink backlight + "LO".
+BG_High     True when above your high threshold: orange backlight + "HI".
+BG_Mgdl     True when the bridge is sending mg/dL (switches the unit label, hides the decimal point).
+BG_Beat     Flips true/false on every send. If it stops flipping, the device covers itself with "--".
+BG_Show     Your menu toggle. Add a Toggle control in your Expression Menu that sets it.
+BG_Simple   Your menu toggle. On = show the plain-words panel (ALL GOOD / LOW NEEDS SUGAR / HIGH NO SUGAR / NO DATA ASK ME) instead of the digits.
+BG_Words    OPTIONAL. Set by the bridge app in 'rotate' mode: true while the plain-words panel should show (bridge rotates mmol/L, mg/dL, words).
+BG_LangSel  OPTIONAL. Menu radial puppet 0..1, one language per tenth: en, fr, es, de, ja, zh-Hans, zh-Hant, ko, pt-BR, ru. Starts in the middle of the builder's chosen language.

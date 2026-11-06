@@ -1,0 +1,14 @@
+# Opens a pull request when a pinned GitHub Action has a newer release, but only after the release
+# is 14 days old (the "cooldown"), so a hijacked release is usually caught before it reaches you.
+# Python build packages are updated with packaging/lock_deps.py instead.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    groups:
+      actions:
+        patterns: ['*']

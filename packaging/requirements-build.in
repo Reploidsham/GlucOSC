@@ -1,0 +1,6 @@
+# Top-level build tools for the Linux and Windows apps.
+# One name per line. Leave unpinned to take the newest release that is at least the cooldown age
+# (14 days by default), or pin with == to hold a version.
+# After editing, run:  python3 packaging/lock_deps.py   and commit requirements-build.txt.
+PySide6-Essentials
+pyinstaller
